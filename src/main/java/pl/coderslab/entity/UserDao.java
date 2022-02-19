@@ -120,7 +120,7 @@ public class UserDao {
     }
 
     public void delete(int userId) {
-        try (Connection conn = DBUtil.connect("workshop2")) {
+        try (Connection conn = DBUtil.getConnection()) {
             PreparedStatement preStmt = conn.prepareStatement(USERS_WHERE_ID);
             preStmt.setInt(1, userId);
             ResultSet rs = preStmt.executeQuery();
