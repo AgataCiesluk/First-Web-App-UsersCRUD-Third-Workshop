@@ -162,4 +162,21 @@ public class UserDao {
             throw new DaoException("Can not find any object.", ex);
         }
     }
+    public User[] findAllWeb() {
+        try (Connection conn = DBUtil.getConnection()) {
+            User[] users2 = new User[0];
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(SELECT_ALL);
+            while (rs.next()) {
+                int userId = rs.getInt("id");
+                User u = read(userId);
+                users2 = addToArray(u,users2);
+            }
+
+            return users2;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw new DaoException("Can not find any object.", ex);
+        }
+    }
 }
