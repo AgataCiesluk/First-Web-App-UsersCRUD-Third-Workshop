@@ -1,5 +1,8 @@
 package pl.coderslab.users;
 
+import pl.coderslab.entity.User;
+import pl.coderslab.entity.UserDao;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +14,9 @@ import java.io.IOException;
 public class UserShow extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userId = req.getParameter("id");
-        resp.getWriter().println("You want to see details of user with ID: " + userId);
+        int userId = Integer.parseInt(req.getParameter("id"));
+        User user = new UserDao().read(userId);
+        req.setAttribute("user", user);
+        getServletContext().getRequestDispatcher("/users/show.jsp").forward(req, resp);
     }
 }
