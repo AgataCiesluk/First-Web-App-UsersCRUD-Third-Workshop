@@ -19,9 +19,12 @@
         <a href="/user/list" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Users list</a>
     </div>
-    <p>Add user</p>
     <!-- Content Row -->
     <div class="row">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Add new user</h6>
+            </div>
         <form action="/user/add" method="post">
             <div class="form-group">
                 <label for="inputUsername">Username</label>
@@ -41,6 +44,7 @@
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
+        </div>
 
     </div>
     <!-- /.container-fluid -->

@@ -90,7 +90,7 @@ public class UserDao {
     }
 
     public void update(User user) {
-        try (Connection conn = DBUtil.connect("workshop2")) {
+        try (Connection conn = DBUtil.getConnection()) {
             PreparedStatement preStmt = conn.prepareStatement(UPDATE_USER_EMAIL_USERNAME);
             preStmt.setString(1, user.getEmail());
             preStmt.setString(2, user.getUserName());
@@ -106,7 +106,7 @@ public class UserDao {
     }
 
     public void updatePassword(User user) {
-        try (Connection conn = DBUtil.connect("workshop2")) {
+        try (Connection conn = DBUtil.getConnection()) {
             PreparedStatement preStmt = conn.prepareStatement(UPDATE_PASSWORD);
             preStmt.setString(1, getPasswordHashed(user));
             preStmt.setInt(2,user.getId());
