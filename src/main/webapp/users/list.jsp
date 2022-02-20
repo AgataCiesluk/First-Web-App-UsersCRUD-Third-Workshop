@@ -15,9 +15,9 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        <h1 class="h3 mb-0 text-gray-800">All users</h1>
         <a href="<c:url value="/user/add"/>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i> Add new user</a>
+                class="fas fa-plus fa-sm text-white-50"></i> Add new user</a>
     </div>
 
         <div class="card shadow mb-4">
@@ -39,10 +39,7 @@
                                 <td>${user.userName}</td>
                                 <td>${user.email}</td>
                                 <td>
-                                    <form action="/user/delete" method="post">
-                                        <input type="hidden" name="userIdToDelete" value="${user.id}">
-                                        <button type="submit" class="btn btn-link">Delete</button>
-                                    </form>
+                                    <a href="/user/delete?id=${user.id}">Remove</a>
                                     <a href="/user/edit?id=${user.id}">Edit</a>
                                     <a href="/user/show?id=${user.id}">Show</a></td>
                             </tr>

@@ -1,15 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: aga
-  Date: 19.02.2022
-  Time: 15:13
+  Date: 20.02.2022
+  Time: 20:07
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/header.jsp" %>
-
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -23,29 +22,19 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Edit user</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Confirm user removal</h6>
         </div>
         <div class="card-body">
             <form method="post">
-                <div class="form-group">
-                    <label for="inputUsername">Username</label>
-                    <input type="text" name="username" class="form-control" id="inputUsername"
-                           value="${user.userName}"/>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail">Email</label>
-                    <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
-                           value="${user.email}"/>
-                </div>
-                <input type="hidden" name="userId" value="${user.id}">
-                <button type="submit" class="btn btn-primary">Edit and save</button>
+                <label>
+                    <span>Are you sure that user with ID ${user.id} should be deleted?</span><br>
+                    <input type="hidden" name="userId" value="${user.id}">
+                <button type="submit" class="btn btn-primary">Confirm</button>
+                </label>
             </form>
-
         </div>
     </div>
     <a href="/user/list">Back</a>
 </div>
-
-<!-- /.container-fluid -->
 
 <%@ include file="/footer.jsp" %>

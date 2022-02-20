@@ -28,15 +28,12 @@ public class UserEdit extends HttpServlet {
         int userId = Integer.parseInt(req.getParameter("userId"));
         String newUsername = req.getParameter("username");
         String newEmail = req.getParameter("email");
-        String newPassword = req.getParameter("password");
 
         UserDao userDao = new UserDao();
         User user = userDao.read(userId);
         user.setUserName(newUsername);
         user.setEmail(newEmail);
-        user.setPassword(newPassword);
         userDao.update(user);
-        userDao.updatePassword(user);
 
         resp.sendRedirect(req.getContextPath() + "/user/list");
     }
