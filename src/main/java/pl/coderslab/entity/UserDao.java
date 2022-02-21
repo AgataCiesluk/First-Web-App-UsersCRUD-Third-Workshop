@@ -4,7 +4,9 @@ import org.mindrot.jbcrypt.BCrypt;
 import pl.coderslab.utils.DBUtil;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class UserDao {
     private static final String CREATE_USER_QUERY =
@@ -162,15 +164,15 @@ public class UserDao {
             throw new DaoException("Can not find any object.", ex);
         }
     }
-    public User[] findAllWeb() {
+    public List<User> findAllWeb() {
         try (Connection conn = DBUtil.getConnection()) {
-            User[] users2 = new User[0];
+            List<User> users2 = new ArrayList<>();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(SELECT_ALL);
             while (rs.next()) {
                 int userId = rs.getInt("id");
                 User u = read(userId);
-                users2 = addToArray(u,users2);
+                users2.add(u);
             }
 
             return users2;
