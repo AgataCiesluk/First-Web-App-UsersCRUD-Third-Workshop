@@ -47,4 +47,28 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public boolean validUser(User user) {
+        if (user.getUserName() == null || user.getUserName().isBlank()) {
+            return false;
+        }
+        if (user.getEmail() == null || user.getEmail().isBlank()) {
+            return false;
+        }
+        if (user.getPassword() == null || user.getPassword().isBlank()) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validUserNoPass(User user) {
+        if (user.getUserName() == null || user.getUserName().isBlank()) {
+            return false;
+        }
+        if (user.getEmail() == null || user.getEmail().isBlank()) {
+            return false;
+        }
+        return true;
+    }
+
 }

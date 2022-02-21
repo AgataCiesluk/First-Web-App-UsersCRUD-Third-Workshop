@@ -25,6 +25,11 @@
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Edit user</h6>
         </div>
+        <c:if test="${not empty errorMsg}">
+            <div class="alert alert-danger" role="alert">
+                <c:out value="${errorMsg}"/>
+            </div>
+        </c:if>
         <div class="card-body">
             <form method="post">
                 <div class="form-group">
